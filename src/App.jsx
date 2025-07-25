@@ -8,7 +8,7 @@ import { Water } from 'three-stdlib'
 import { Model2 } from './islands/Island2'
 import { Model1 } from './islands/Island1'
 import { Model3 } from './islands/Island3'
-import { Model4 } from './islands/island4'
+import { Model4 } from './islands/Island4'
 
 extend({ Water })
 
