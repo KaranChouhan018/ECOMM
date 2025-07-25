@@ -1,13 +1,11 @@
 import * as THREE from 'three'
 import React, { Suspense, useRef, useMemo } from 'react'
 import { Canvas, extend, useThree, useLoader, useFrame } from '@react-three/fiber'
-import { OrbitControls, Sky } from '@react-three/drei'
+import {  Sky } from '@react-three/drei'
 
 
 import { Water } from 'three-stdlib'
-import { Model2 } from './islands/Island2'
-import { Model1 } from './islands/Island1'
-import { Model3 } from './islands/Island3'
+
 import { Model4 } from './islands/Island4'
 
 extend({ Water })
@@ -41,8 +39,8 @@ function MouseMoveEffect() {
   const { camera, mouse } = useThree()
   useFrame(() => {
     // Smoothly interpolate camera rotation based on mouse
-    camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, mouse.x * -0.1, 0.05)
-    camera.rotation.x = THREE.MathUtils.lerp(camera.rotation.x, -mouse.y * 0.1, 0.05)
+    camera.rotation.y = THREE.MathUtils.lerp(camera.rotation.y, mouse.x * 0.1, 0.01)
+    camera.rotation.x = THREE.MathUtils.lerp(camera.rotation.x, -mouse.y * 0.1, 0.01)
   })
   return null
 }
@@ -50,7 +48,7 @@ function MouseMoveEffect() {
 export default function App() {
   return (
     <Canvas
-  camera={{ position: [0, 5, 100], fov: 55, near: 1, far: 20000 }}
+  camera={{ position: [0, 10, 100], fov: 55, near: 1, far: 20000 }}
   fog={{ color: '#ff4500', near: 10, far: 300 }}
 >
       <pointLight position={[100, 100, 100]} />
@@ -60,7 +58,7 @@ export default function App() {
         {/* <Model1 scale={10} /> */}
         {/* <Model2 position={[0,-55,0]}/> */}
         {/* <Model3 scale={10}  position={[0,-0.4,0]} /> */}
-        <Model4 scale={7} position={[0, -120, 0]} />
+        <Model4 scale={2} position={[0, -38, 0]} />
       </Suspense>
       <Sky
       
