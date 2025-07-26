@@ -40,9 +40,27 @@ function BackgroundMusic() {
 
   useEffect(() => {
     const audio = audioRef.current
-    audio.src = './bgmusic.mp3'
+    audio.src = '/bgmusic.mp3'
     audio.loop = true
-    audio.play().catch(error => console.error("Audio play failed:", error))
+
+    const handleInteraction = () => {
+      audio.play().catch(error => console.error("Audio play failed:", error));
+      // Remove the event listener after the first interaction
+      document.removeEventListener('click', handleInteraction);
+      document.removeEventListener('keydown', handleInteraction);
+      document.removeEventListener('touchstart', handleInteraction);
+    };
+
+    document.addEventListener('click', handleInteraction);
+    document.addEventListener('keydown', handleInteraction);
+    document.addEventListener('touchstart', handleInteraction);
+
+
+    return () => {
+      document.removeEventListener('click', handleInteraction);
+      document.removeEventListener('keydown', handleInteraction);
+      document.removeEventListener('touchstart', handleInteraction);
+    };
   }, [])
 
   return <audio ref={audioRef} />
