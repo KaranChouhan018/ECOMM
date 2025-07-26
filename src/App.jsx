@@ -40,7 +40,7 @@ function BackgroundMusic() {
 
   useEffect(() => {
     const audio = audioRef.current
-    audio.src = '/bgmusic.mp3'
+    audio.src = './bgmusic.mp3'
     audio.loop = true
     audio.play().catch(error => console.error("Audio play failed:", error))
   }, [])
